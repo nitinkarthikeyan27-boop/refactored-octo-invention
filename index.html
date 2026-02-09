@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    button {
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #fff;
+      color: #ff4d6d;
+    }
+
+    #message {
+      margin-top: 20px;
+      color: white;
+      font-size: 18px;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <h1>Will you be my Valentine? 💕</h1>
+
+    <div class="buttons">
+      <button id="yesBtn">YES</button>
+      <button id="noBtn">NO</button>
+    </div>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const noMessages = [
+      "are you sure?",
+      "baby u sure",
+      "babyyyyyy",
+      "just say yes baby",
+      "baby pleaseeee"
+    ];
+
+    let noClickCount = 0;
+    let yesScale = 1;
+
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+    const container = document.getElementById("container");
+
+    noBtn.addEventListener("click", () => {
+      message.textContent = noMessages[noClickCount % noMessages.length];
+      noClickCount++;
+
+      yesScale += 0.3;
+      yesBtn.style.transform = `scale(${yesScale})`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      container.innerHTML = `
+        <h1 style="color:white; font-size:36px;">
+          i love u sm sweetheart ❤️
+        </h1>
+      `;
+    });
+  </script>
+
+</body>
+</html>
