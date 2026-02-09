@@ -10,11 +10,10 @@
         text-align: center;
         height: 100vh;
         margin: 0;
-        overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
+        color: #fff;
     }
 
     .container {
@@ -22,8 +21,6 @@
         padding: 40px;
         border-radius: 20px;
         backdrop-filter: blur(10px);
-        position: relative;
-        z-index: 2;
     }
 
     h1 {
@@ -39,7 +36,6 @@
         border-radius: 50px;
         cursor: pointer;
         transition: 0.3s;
-        position: relative;
     }
 
     #yesBtn {
@@ -50,40 +46,16 @@
     #noBtn {
         background: white;
         color: #ff4d6d;
-        position: absolute;
     }
 
     #message {
         font-size: 28px;
         margin-top: 20px;
     }
-
-    /* Floating hearts */
-    .heart {
-        position: fixed;
-        bottom: -20px;
-        color: rgba(255,255,255,0.7);
-        font-size: 20px;
-        animation: float 6s linear infinite;
-        z-index: 1;
-    }
-
-    @keyframes float {
-        0% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-110vh) scale(1.5);
-            opacity: 0;
-        }
-    }
 </style>
 </head>
 <body>
-<audio id="bgMusic" loop>
-  <source src="zayn-malik_one-direction_what-makes-you-beautiful.mp3" type="audio/mpeg">
-</audio>
+
 <div class="container">
     <h1 id="question">Will you be my Valentine?</h1>
     <button id="yesBtn">YES</button>
@@ -108,27 +80,16 @@
         "Baby pleaseeee"
     ];
 
-    // Move NO button
-    function moveNoButton() {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 50);
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
-    }
-
     noBtn.addEventListener("click", () => {
         noClicks++;
 
-        // Increase YES size
+        // Increase YES button size
         yesSize += 15;
         yesBtn.style.fontSize = yesSize + "px";
         yesBtn.style.padding = (yesSize/2) + "px " + yesSize + "px";
 
-        // Change text
+        // Change NO text
         noBtn.textContent = texts[noClicks % texts.length];
-
-        // Move NO button
-        moveNoButton();
     });
 
     yesBtn.addEventListener("click", () => {
@@ -137,22 +98,6 @@
         noBtn.style.display = "none";
         message.textContent = "I love u sm sweetheart ❤️";
     });
-
-    // Create floating hearts
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 7000);
-    }
-
-    setInterval(createHeart, 400);
 </script>
 
 </body>
