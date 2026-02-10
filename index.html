@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <title>Be My Valentine</title>
 <style>
+    .heart {
+  position: fixed;
+  top: -10px;
+  color: red;
+  font-size: 20px;
+  animation: fall linear forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
     body {
         background: linear-gradient(135deg, #ff9a9e, #fad0c4);
         font-family: Arial, sans-serif;
@@ -99,6 +114,24 @@
         message.textContent = "I love u sm sweetheart ❤️";
     });
 </script>
+<script>
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText = "❤️";
 
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (15 + Math.random() * 25) + "px";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
 </body>
 </html>
